@@ -159,7 +159,10 @@ function createSnowflake() {
 // Crear copos continuamente
 setInterval(createSnowflake, 200);
 
-// Crear copos iniciales
-for (let i = 0; i < 20; i++) {
-    setTimeout(createSnowflake, i * 120);
-}
+// Inicializar la nieve cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    // Crear copos iniciales
+    for (let i = 0; i < 20; i++) {
+        setTimeout(createSnowflake, i * 120);
+    }
+});

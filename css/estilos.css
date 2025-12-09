@@ -206,23 +206,7 @@ align-self: center;
   padding: 2rem 0;
 }
 
-/* COPOS DE NIEVE */
-.snowflake {
-  position: fixed;
-  top: -10px;
-  color: white;
-  font-size: 1.5rem;
-  z-index: 1;
-  pointer-events: none;
-  animation: fall linear infinite;
-  opacity: 0.8;
-}
 
-@keyframes fall {
-  to {
-    transform: translateY(100vh) rotate(360deg);
-  }
-}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -253,6 +237,7 @@ align-self: center;
     padding: 12px 30px;
   }
 }
+/* EFECTO DE NIEVE */
 .snowflake {
   position: fixed;
   top: -4rem;
@@ -266,6 +251,9 @@ align-self: center;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Añadido para la animación */
+  animation: fall linear forwards;
 }
 
 @keyframes fall {
