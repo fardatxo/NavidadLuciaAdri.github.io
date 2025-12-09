@@ -1,3 +1,4 @@
+// FUNCIÓN PARA VERIFICAR RESPUESTAS
 function verificarRespuesta(pregunta) {
     // Obtener el valor seleccionado del grupo de entrantes
     const opciones = document.getElementsByName('entrante');
@@ -14,18 +15,17 @@ function verificarRespuesta(pregunta) {
     // Verificar si se seleccionó alguna opción
     if (seleccionada === null) {
         alert("Por favor, selecciona una respuesta.");
-        //return;
+        return;
     }
 
     // Creamos las variables para controlar el nivel de difuminado
-    // Y los divs que aparecen y desaparacen
+    // Y los divs que aparecen y desaparecen
     let img_difuminar = null;
     let difuminado = null;
     let div_aparece = null;
     let div_desaparece = null;
 
     // Definimos la respuesta correcta para cada pregunta
-    // Para la pregunta 1, la correcta es la respuesta 2
     let respuestaCorrecta = null; 
     switch (pregunta) {
         case "pregunta1":
@@ -124,7 +124,42 @@ function verificarRespuesta(pregunta) {
         document.getElementById(div_aparece).style.display = "block";
     } else {
         alert("¡Respuesta incorrecta! Vuelve a intentarlo.");
-        //alert(respuestaCorrecta);
-        //alert(seleccionada);
     }
+}
+
+// FUNCIÓN PARA CREAR COPOS DE NIEVE
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+
+    // Carácter del copo (Unicode seguro)
+    snowflake.textContent = '\u2744'; // ❄
+
+    // Posición horizontal aleatoria
+    snowflake.style.left = Math.random() * 100 + 'vw';
+
+    // Duración aleatoria (5–8 s)
+    const dur = (Math.random() * 3 + 5).toFixed(2) + 's';
+    snowflake.style.animation = `fall ${dur} linear forwards`;
+
+    // Tamaño aleatorio
+    const size = (Math.random() * 0.9 + 0.6).toFixed(2) + 'rem';
+    snowflake.style.fontSize = size;
+
+    // Opacidad aleatoria
+    snowflake.style.opacity = (Math.random() * 0.5 + 0.4).toFixed(2);
+
+    document.body.appendChild(snowflake);
+
+    // Eliminar cuando termine la animación
+    const ms = parseFloat(dur) * 1000 + 500;
+    setTimeout(() => snowflake.remove(), ms);
+}
+
+// Crear copos continuamente
+setInterval(createSnowflake, 200);
+
+// Crear copos iniciales
+for (let i = 0; i < 20; i++) {
+    setTimeout(createSnowflake, i * 120);
 }
